@@ -32,7 +32,7 @@ class HalfGanStyleModel(BaseModel):
         if torch.cuda.is_available():
             self.loss_fns = [loss_fn.cuda() for loss_fn in self.loss_fns]
         self.vgg = VGG()
-        self.vgg.load_state_dict(torch.load(os.getcwd() + '/Models/' + 'vgg_conv.pth'))
+        self.vgg.load_state_dict(torch.load(os.getcwd() + '/NNModels/' + 'vgg_conv.pth'))
         for param in self.vgg.parameters():
             param.requires_grad = False
         if torch.cuda.is_available():
