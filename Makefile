@@ -13,4 +13,4 @@ ipython:
 	docker run -it --rm -v $(shell pwd):/app ${IMAGE_TAG}
 
 c:
-	docker run -it --rm -v $(shell pwd):/app ${IMAGE_TAG} /bin/bash
+	docker run -it --gpus all --rm -v $(shell pwd):/app ${IMAGE_TAG} /bin/bash
