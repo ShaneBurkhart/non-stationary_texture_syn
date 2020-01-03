@@ -14,3 +14,6 @@ ipython:
 
 c:
 	docker run -it --gpus all --rm -v $(shell pwd):/app ${IMAGE_TAG} /bin/bash
+
+train:
+	docker run -d --gpus all --rm -v $(shell pwd):/app ${IMAGE_TAG} /bin/bash scripts/train_half_style.sh
