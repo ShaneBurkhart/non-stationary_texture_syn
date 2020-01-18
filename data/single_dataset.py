@@ -15,6 +15,7 @@ class SingleDataset(BaseDataset):
         self.A_paths = make_dataset(self.dir_A)
 
         self.A_paths = sorted(self.A_paths)
+        self.fineSize = opt.fineSize
 
         self.transform = get_transform(opt)
 
