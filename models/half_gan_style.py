@@ -19,6 +19,7 @@ class HalfGanStyleModel(BaseModel):
     def initialize(self, opt):
         BaseModel.initialize(self, opt)
         self.isTrain = opt.isTrain
+        self.fineSize = opt.fineSize
         # define tensors
         self.input_A = self.Tensor(opt.batchSize, opt.input_nc,
                                    int(opt.fineSize / 2), int(opt.fineSize / 2))
