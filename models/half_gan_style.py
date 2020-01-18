@@ -9,6 +9,7 @@ from util.image_pool import ImagePool
 from .base_model import BaseModel
 from . import networks
 from .vgg import VGG, GramMatrix, GramMSELoss
+import random
 
 
 class HalfGanStyleModel(BaseModel):
@@ -88,6 +89,9 @@ class HalfGanStyleModel(BaseModel):
     def forward(self):
         self.real_A = Variable(self.input_A)
         self.fake_B = self.netG.forward(self.real_A)
+        rw = random.randint(0, self.fineSize - 1)
+        rh = random.randint(0, self.fineSize - 1)
+        self.fake_B = torch.roll(self.fake_B, shifts=(rw, rh), dims=(2, 3))
         self.real_B = Variable(self.input_B)
 
     # no backprop gradients
