@@ -22,6 +22,11 @@ class SingleDataset(BaseDataset):
 
         A_img = Image.open(A_path).convert('RGB')
 
+        w, h = A_img.size
+        rw = random.randint(0, w - self.fineSize)
+        rh = random.randint(0, h - self.fineSize)
+        A_img = A_img.crop((rw, rh, rw + self.fineSize, rh + self.fineSize))
+
         A_img = self.transform(A_img)
 
         return {'A': A_img, 'A_paths': A_path}
